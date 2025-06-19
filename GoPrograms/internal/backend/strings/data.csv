@@ -1,0 +1,8 @@
+aabbb,a*b*,true
+aa, a, false
+aa, a*, true
+aa, a., true
+aaaa, a*, true
+abbbba, a*, false
+mississippi, mis*is*p*., false
+mississippi, mis*is*ip*., false

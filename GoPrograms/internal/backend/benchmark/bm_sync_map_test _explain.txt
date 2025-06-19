@@ -1,0 +1,29 @@
+=== RUN   BenchmarkMapRWMutex
+BenchmarkMapRWMutex
+BenchmarkMapRWMutex-8
+10289821               116.6 ns/op             0 B/op          0 allocs/op
+PASS
+ok      myproject/internal/backend/benchmark    7.072s
+
+=== RUN   BenchmarkSyncMap
+BenchmarkSyncMap
+BenchmarkSyncMap-8
+23865178                47.97 ns/op           24 B/op          0 allocs/op
+PASS
+ok      myproject/internal/backend/benchmark    2.807s
+
+Practical Guidance
+Scenario									Recommended Approach
+High read, low write, dynamic keys			sync.Map
+Balanced read/write, type safety needed		map + RWMutex
+Mostly write-heavy, complex updates			map + Mutex (or RWMutex)
+Simple, few goroutines						plain map (no mutex)
+
+⚖️ Comparison Table
+Feature						sync.Mutex				sync.RWMutex
+Concurrent Reads			Not allowed				✅ Allowed (via RLock)
+Concurrent Writes			Only one allowed		Only one allowed
+Read during Write			Blocked					Blocked
+Write during Read			Blocked					Blocked
+Performance (read-heavy)	👎 Slower				👍 Faster due to RLock
+Complexity	✅ Simple	  ⚠️ Slightly more complex

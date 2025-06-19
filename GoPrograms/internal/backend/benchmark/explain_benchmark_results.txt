@@ -1,0 +1,54 @@
+Running tool: C:\Program Files\Go\bin\go.exe test -benchmem -run=^$ -bench ^BenchmarkFulMarket$ myproject/internal/backend/benchmark
+
+goos: windows
+goarch: amd64
+pkg: myproject/internal/backend/benchmark
+cpu: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+=== RUN   BenchmarkFulMarket
+BenchmarkFulMarket
+BenchmarkFulMarket-8
+    2256            496048 ns/op          152301 B/op       2017 allocs/op
+PASS
+ok      myproject/internal/backend/benchmark    3.849s
+
+Running tool: C:\Program Files\Go\bin\go.exe test -benchmem -run=^$ -bench ^BenchmarkInternalMarket$ myproject/internal/backend/benchmark
+
+goos: windows
+goarch: amd64
+pkg: myproject/internal/backend/benchmark
+cpu: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+=== RUN   BenchmarkInternalMarket
+BenchmarkInternalMarket
+BenchmarkInternalMarket-8
+    4617            252742 ns/op           43954 B/op         77 allocs/op
+PASS
+ok      myproject/internal/backend/benchmark    1.527s
+
+
+Breakdown:
+Field	        Meaning
+14268           Number of iterations your benchmark ran (b.N). Go runs the benchmark repeatedly to get stable timing. Here it ran 14,268 times.
+83798 ns/op	    Average time per operation (per iteration) — about 83,798 nanoseconds (or ~83.8 microseconds) per run of your benchmark function.
+21272 B/op	    Average bytes allocated per operation — 21,272 bytes allocated each iteration.
+206 allocs/op	Number of memory allocations performed per iteration (206 allocations per run).
+PASS	        Your benchmark ran successfully without panics or errors.
+4.691s	        Total time taken to run the benchmark test (all iterations combined).
+
+What this tells you:
+Your benchmarked function takes ~83.8 microseconds to complete.
+It allocates around 21 KB of memory per run.
+It performs 206 allocations per iteration, which might be something to optimize if allocations matter (e.g., reduce GC pressure).
+The benchmark ran enough iterations (14,268) to give reliable timing data.
+
+| Library       | Speed               | Ease of Use      | Requires Code Generation |
+| ------------- | ------------------- | ---------------- | ------------------------ |
+| encoding/json | Baseline            | Very easy        | No                       |
+| jsoniter      | \~2x faster         | Very easy        | No                       |
+| easyjson      | Up to \~5x faster   | Moderate (setup) | Yes                      |
+| go-json       | Similar to easyjson | Easy             | No                       |
+
+
+go test -bench=BenchmarkUnmarshalFullMarket -cpuprofile=cpu.prof -memprofile=mem.prof
+go tool pprof cpu.prof
+go tool pprof mem.prof
+

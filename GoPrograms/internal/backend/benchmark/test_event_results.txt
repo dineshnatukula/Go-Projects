@@ -1,0 +1,25 @@
+Running tool: C:\Program Files\Go\bin\go.exe test -benchmem -run=^$ -bench ^BenchmarkFullEvent$ myproject/internal/backend/benchmark
+
+goos: windows
+goarch: amd64
+pkg: myproject/internal/backend/benchmark
+cpu: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+=== RUN   BenchmarkFullEvent
+BenchmarkFullEvent
+BenchmarkFullEvent-8
+   14138             85539 ns/op           21272 B/op        206 allocs/op
+PASS
+ok      myproject/internal/backend/benchmark    4.480s
+
+Running tool: C:\Program Files\Go\bin\go.exe test -benchmem -run=^$ -bench ^BenchmarkInternalEvent$ myproject/internal/backend/benchmark
+
+goos: windows
+goarch: amd64
+pkg: myproject/internal/backend/benchmark
+cpu: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+=== RUN   BenchmarkInternalEvent
+BenchmarkInternalEvent
+BenchmarkInternalEvent-8
+   23446             50280 ns/op            9640 B/op         41 allocs/op
+PASS
+ok      myproject/internal/backend/benchmark    2.052s
