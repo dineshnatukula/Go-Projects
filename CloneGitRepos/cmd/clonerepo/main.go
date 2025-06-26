@@ -27,9 +27,9 @@ func cloneRepo(repoURL, targetDir string) error {
 func main() {
 	targetDir := "c://Users//dinesh.natukula//Documents//backend-services-new-repo//" // Change as needed
 	repos := []string{
-		// "https://gitlab.pragmaticplaysports.com/ppbet/backendservices/aggregationworker.git",
-		// "https://gitlab.pragmaticplaysports.com/ppbet/backendservices/archivecleanup.git",
-		// "https://gitlab.pragmaticplaysports.com/ppbet/backendservices/archiving.git",
+		"https://gitlab.pragmaticplaysports.com/ppbet/backendservices/aggregationworker.git",
+		"https://gitlab.pragmaticplaysports.com/ppbet/backendservices/archivecleanup.git",
+		"https://gitlab.pragmaticplaysports.com/ppbet/backendservices/archiving.git",
 		"https://gitlab.pragmaticplaysports.com/ppbet/backendservices/bbprocessor.git",
 		"https://gitlab.pragmaticplaysports.com/ppbet/backendservices/authtri.git",
 		"https://gitlab.pragmaticplaysports.com/ppbet/backendservices/betbasketd.git",
